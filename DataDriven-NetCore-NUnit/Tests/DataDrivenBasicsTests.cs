@@ -1,8 +1,9 @@
+using DataDriven_NetCore_NUnit.Helpers;
 using NUnit.Framework;
 
 namespace DataDriven_NetCore_NUnit
 {
-    public class DataDrivenTests
+    public class DataDrivenBasicsTests
     {
 
         [TestCase("Irene J. Hunt","3022694414")]
@@ -26,9 +27,9 @@ namespace DataDriven_NetCore_NUnit
         public void UsingTestCase2(int param1, int param2, int expectedResult)
         {
             int sumNumbers = param1 + param2;
-            
             Assert.AreEqual(expectedResult, sumNumbers);
         }
+
 
         [Test]
         public void UsingCombinatorial(
@@ -51,12 +52,12 @@ namespace DataDriven_NetCore_NUnit
         }
 
 
-
         static object[] PersonData =
         {
             new object[] { "Irene J. Hunt", "1156736694" },  //TestCase1
             new object[] { "Michael D. Young", "8056736694"} //TestCase2
         };
+
 
         [TestCaseSource("PersonData")]
         public void UsingTestCaseSourceMultipleObj(string name, string telephoneNumber)
@@ -65,52 +66,6 @@ namespace DataDriven_NetCore_NUnit
             //some acts in website using "telephoneNumber" variable
             Assert.Pass();
         }
-
-
-        //There is a Class named "TestDataDrivenHelpers" which has a method named "PersonData" 
-        [TestCaseSource(typeof(DataDrivenHelpers), "PersonData")]
-        public void UsingListObjectOutOfTestClass(string name, string telephoneNumber)
-        {
-             //some acts in website using "name" variable
-            //some acts in website using "telephoneNumber" variable
-            Assert.Pass();
-        }
-
-
-        
-        [TestCaseSource(typeof(DataDrivenHelpers),"ReturnNameTelephone_CSV")]
-        public void UsingCSVSource(string name, string telephoneNumber)
-        {
-             //some acts in website using "name" variable
-            //some acts in website using "telephoneNumber" variable
-            Assert.Pass();
-        }
-
-        [TestCaseSource(typeof(DataDrivenHelpers),"ReturnNameTelephone_XLSX")]
-        public void UsingXLSXSource(string name, string telephoneNumber)
-        {
-            //some acts in website using "name" variable
-            //some acts in website using "telephoneNumber" variable
-            Assert.Pass();
-        }
-
-
-        [Test]
-        public void UsingDataBaseSource()
-        {
-            Assert.Pass();
-        }
-
-
-        [TestCaseSource(typeof(DataDrivenHelpers),"ReturnDataUsingAPI")]
-        public void UsingAPISource(string name, string email)
-        {
-            //some acts in website using "name" variable
-            //some acts in website using "telephoneNumber" variable
-            Assert.Pass();
-        }
-
-
 
     }
 }

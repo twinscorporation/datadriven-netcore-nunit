@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.IO;
+using DataDriven_NetCore_NUnit.Helpers;
 using NUnit.Framework;
 
 namespace DataDriven_NetCore_NUnit
@@ -74,8 +76,22 @@ namespace DataDriven_NetCore_NUnit
             
            foreach (var user in users)
            {
-               testcase.Add(new TestCaseData(user.first_name, user.email));
+               testcase.Add(new TestCaseData(user.first_name.ToString(), user.email.ToString()));
            }
+
+           return testcase;
+        }
+
+        public static List<TestCaseData>  ReturnDataUsingDataBase()
+        {
+            var testcase = new List<TestCaseData>();
+            DataTable users = DataBaseHelpers.RetornaDadosDataTableQuery("SELECT * FROM `user`");
+            Console.WriteLine(users);
+
+            foreach(DataRow row in users.Rows)
+            { 
+                testcase.Add(new TestCaseData(row[1].ToString(), row[2].ToString()));
+            }
 
            return testcase;
         }
