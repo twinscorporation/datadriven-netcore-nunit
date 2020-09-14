@@ -11,7 +11,7 @@ namespace DataDriven_NetCore_NUnit
         public void UsingAPISource(string name, string email)
         {
             //some acts in website using "name" variable
-            //some acts in website using "telephoneNumber" variable
+            //some acts in website using "email" variable
             Assert.Pass();
         }
 
