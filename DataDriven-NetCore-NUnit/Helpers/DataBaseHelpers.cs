@@ -9,6 +9,7 @@ namespace DataDriven_NetCore_NUnit.Helpers
     {
         public static MySqlConnection GetDBConnection()
         {
+            //Credenciais criadas em um e-mail aleatório. Don't worry (=
             string connectionString = "Server= remotemysql.com;" +
                                       "Port= 3306;" +
                                       "Database= OKL6zz3Ewh;" +
